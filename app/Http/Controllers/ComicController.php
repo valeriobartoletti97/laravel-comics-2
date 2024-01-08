@@ -4,17 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Models\Comic;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
+
 
 class ComicController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function index()
     {
-        //
+        $linksComics = config('db.linksComics');
+        $linksDc = config('db.linksDc');
+        $linksSites = config('db.linksSites');
+        $linksShop = config('db.linksShop');
+        $comics = Comic::all();
+        return view('comics.index', compact('comics','linksComics', 'linksDc', 'linksSites', 'linksShop'));
     }
 
     /**
