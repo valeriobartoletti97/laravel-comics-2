@@ -9,35 +9,43 @@
 
 CONSEGNA:
 
-Create un nuovo progetto Laravel. Concentratevi sul layout: create un file di layout in cui inserire la struttura comune di tutte le pagine del sito web (tag head, tag body, ...) eventualmente includendo header e footer tramite due partials.
 
-Create poi una rotta per visualizzare la lista di tutti i fumetti recuperati da un file inserito nella cartella config e abbellite il tutto sfruttando Sass.
+Oggi create un nuovo progetto Laravel 9 per gestire un archivio di fumetti.
+
+MILESTONE 1
+
+Tramite gli appositi comandi artisan create un model con relativa migration e seeder e resource controller.
+Editate la resource route
+
+MILESTONE 2
+
+Iniziate a definire le prime operazioni CRUD con le relative view dove necessarie:
+- index()
+- show()
+- create()
+- store() (solo dump dei dati)
 
 BONUS:
-Create più pagine istituzionali che condividono lo stesso layout (utilizzando il routing)
+Procedere con il salvataggio dei dati sul db
 
-## Installazione laravel
+## Installazione Laravel
 
 ```bash
+cd your parent_folder_path
 
-cd cartella esercizi
+composer create-project --prefer-dist laravel/laravel:^9.2 your_project_name_here
 
-composer create-project --prefer-dist laravel/laravel:^9.2 your_project_name
-
-cd your_project_name
+cd your_project_name_here
 
 code . -r
 
-php artisan serve 
+php artisan serve
 
 ctrl + c
 
 ```
-
-## Configurazione
-
+## Configurazione Laravel
 ```bash
-
 composer require pacificdev/laravel_9_preset
 
 php artisan preset:ui bootstrap
@@ -46,31 +54,87 @@ npm install
 
 npm install --save @fortawesome/fontawesome-free
 
-#in vite config aggiungo agli alias questo pezzo
+#in vite config aggiungo agli alias
 '~@fortawesome': path.resolve(__dirname, 'node_modules/@fortawesome'),
 
-andiamo a copiare e ad incollare la cartella webfonts da @fontawesome in resources
+#copio la cartella dei webfont e se voglio la rinomino
 
-#aggiungiamo al nostro file app.scss
+#installo dbal per migration e seeder
+composer require doctrine/dbal
 
-@use './partials/variables' as *;
 
-$fa-font-path: "../webfonts" !default;
-
-@import "~@fortawesome/fontawesome-free/scss/fontawesome";
-@import "~@fortawesome/fontawesome-free/scss/regular";
-@import "~@fortawesome/fontawesome-free/scss/solid";
-@import "~@fortawesome/fontawesome-free/scss/brands";
-
-@import '~bootstrap/scss/bootstrap';
-
-##comandi git
+#comandi git
 
 git init
-git add . 
+git add .
 git commit -m "first commit"
 git branch -M main
-git remote add origin your_git_url
+git remote add origin your_git_url 
 git push -u origin main
+
+
+```
+## Clono progetto da github 
+
+```bash
+# copio file .env.example e lo rinomino in .env
+
+composer install
+
+php artisan key:generate
+
+npm install
+
+#cancello il composer.lock e nel composer.json sotto la voce php inserisco
+
+"doctrine/dbal": "^3.3",
+
+# inserisco i dati per il collegamento al db in env
+
+#creo migration
+php artisan make:migration create_nome_tabella_table
+
+#popolare il db
+php artisan make:seeder UsersTableSeeder
+
+# preparo le rotte file web.php es. 
+Route::get('/books', [BookController::class,'index'])->name('books.index');
+
+# creo controller
+php artisan make:controller NomeController
+php artisan make:migration update_users_table --table=users
+php artisan make:migration add_phone_number_to_users_table
+
+#creo model
+php artisan make:model Nome 
+
+#oppure una scorciatoia per creare Model,migrations,seeder e controller
+
+php artisan make:model Nome -rcms
+
+# creo le views relative
+
+#creo il seeder
+
+php artisan make:seeder UsersTableSeeder
+
+#mando il seeder
+
+php artisan db:seed --class=UsersSeeder
+
+```
+
+## Comandi utili
+
+```bash
+
+#vedere tutte le rotte create
+
+php artisan route:list --except-vendor
+
+
+#rileggere tutte le classi
+
+composer dump-autoload
 
 ```
