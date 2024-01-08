@@ -23,6 +23,13 @@
         @endforeach
       </div>
     </div>
+    <div class="container mt-2 pb-5 d-flex justify-content-center align-content-center">
+        <a href="{{route('comics.create')}}">
+            <button id="add-comic" class="btn btn-primary text-uppercase">
+                Aggiungi il tuo fumetto
+            </button>
+        </a>
+    </div>
 </div>
 
 @endsection

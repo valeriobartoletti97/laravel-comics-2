@@ -18,6 +18,9 @@ $fa-font-path: "../webfonts" !default;
 body {
     font-size: 0.8em;
 }
+.my-bg{
+    background-color: $primary-color;
+}
 .my-container{
     max-width: 1000px;
     margin: 0 auto;
@@ -169,8 +172,15 @@ footer {
     color:gray;
  }
 
- .bg-primary{
+ .bg-primary,.bg-primary-h{
     background-color: $primary-color;
+ }
+ .bg-primary-h{
     height: 100px;
-    width:100%
+    width: 100%;
+ }
+ #add-comic{
+    padding:13px 20px;
+    border-radius: 4px;
+    font-weight: 700;
  }

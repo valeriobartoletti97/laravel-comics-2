@@ -1,7 +1,9 @@
 <div>
     <header>
         <div class="container d-flex justify-content-between">
-            <img src="../images/dc-logo.png" alt="logo">
+            <a href="{{route('comics.index')}}">
+                <img src="../images/dc-logo.png" alt="logo">
+            </a>
             <ul class="nav d-flex justify-content-between align-items-center flex-nowrap ">
                 <li class="nav-item px-3 text-uppercase">
                     <a class="" href="#">
@@ -9,7 +11,7 @@
                     </a>
                 </li>
                 <li class="nav-item px-3 text-uppercase">
-                    <a class="active-section" href="#">
+                    <a class="active-section" href="{{route('comics.index')}}">
                         Comics
                     </a>
                 </li>
