@@ -40,16 +40,18 @@ class ComicController extends Controller
     public function store(Request $request)
     {
         //
+        /* valido i dati dal form */
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'thumb' => 'required',
+            'price' => 'required',
+            'sale_date' => '',
+            'series' => 'required',
+            'type' => 'required',
+        ]);
         $data = $request->all();
-        $newComic = new Comic();
-        $newComic->title = $data['title'];
-        $newComic->description = $data['description'];
-        $newComic->thumb = $data['thumb'];
-        $newComic->price = $data['price'];
-        $newComic->sale_date = $data['sale_date'];
-        $newComic->series = $data['series'];
-        $newComic->type = $data['type'];
-        $newComic->save();
+        $newComic= Comic::create($data);
         return redirect()->route('comics.show', $newComic->id);
     }
 
@@ -92,10 +94,12 @@ class ComicController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Comic  $comic
-     * @return \Illuminate\Http\Response
+     * 
      */
     public function destroy(Comic $comic)
     {
         //
+        $comic->delete();
+        return to_route('comics.index')->with('message', "Il prodotto $comic->title è stato eliminato");
     }
 }

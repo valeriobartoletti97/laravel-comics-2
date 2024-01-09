@@ -18,10 +18,15 @@
             <span>{{$comic->price}}</span>
         </div>
         <p class="comic-description mt-4">{{ $comic->description }}</p>
-        <div class="d-flex justify-content-between align-items-center mb-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
             <span class="comic-type text-uppercase">{{$comic->type}}</span>
             <span class="comic-date text-uppercase">On sale date: {{ $comic->sale_date}}</span>
         </div>
+        <form action="{{route('comics.destroy', $comic->id)}}" method="POST" class="d-flex justify-content-end">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger mb-5 me-2">Remove Comic</button>
+        </form>
     </div>
 
 
