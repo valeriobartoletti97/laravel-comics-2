@@ -16,12 +16,8 @@ class ComicController extends Controller
      */
     public function index()
     {
-        $linksComics = config('db.linksComics');
-        $linksDc = config('db.linksDc');
-        $linksSites = config('db.linksSites');
-        $linksShop = config('db.linksShop');
         $comics = Comic::all();
-        return view('comics.index', compact('comics','linksComics', 'linksDc', 'linksSites', 'linksShop'));
+        return view('comics.index', compact('comics'));
     }
 
     /**
@@ -32,11 +28,7 @@ class ComicController extends Controller
     public function create()
     {
         //
-        $linksComics = config('db.linksComics');
-        $linksDc = config('db.linksDc');
-        $linksSites = config('db.linksSites');
-        $linksShop = config('db.linksShop');
-        return view('comics.create', compact('linksComics', 'linksDc', 'linksSites', 'linksShop'));
+        return view('comics.create');
     }
 
     /**
@@ -70,11 +62,7 @@ class ComicController extends Controller
     public function show(Comic $comic)
     {
         //
-        $linksComics = config('db.linksComics');
-        $linksDc = config('db.linksDc');
-        $linksSites = config('db.linksSites');
-        $linksShop = config('db.linksShop');
-        return view('comics.show', compact('comic','linksComics', 'linksDc', 'linksSites', 'linksShop'));
+        return view('comics.show', compact('comic'));
     }
 
     /**
