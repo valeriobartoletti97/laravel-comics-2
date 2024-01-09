@@ -7,6 +7,9 @@
 <div class="bg-black">
     <div class="container">
       <div class="row flex-wrap justify-content-between py-5">
+        @if (session()->has('message'))
+            <div class="alert alert-danger text-uppercase text-center">{{ session()->get('message') }}</div>
+        @endif
         @foreach ($comics as $comic)
             <div class="col-2 d-flex flex-wrap px-2 mt-4">
                 <div class="my-card">

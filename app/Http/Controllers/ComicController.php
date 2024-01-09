@@ -42,11 +42,10 @@ class ComicController extends Controller
         //
         /* valido i dati dal form */
         $request->validate([
-            'title' => 'required',
+            'title' => 'required|min:2|max:100|unique:comics',
             'description' => 'required',
-            'thumb' => 'required',
             'price' => 'required',
-            'sale_date' => '',
+            'sale_date' => 'required',
             'series' => 'required',
             'type' => 'required',
         ]);
@@ -71,11 +70,12 @@ class ComicController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Comic  $comic
-     * @return \Illuminate\Http\Response
+     * 
      */
     public function edit(Comic $comic)
     {
         //
+        return view('comics.edit',compact('comic'));
     }
 
     /**
@@ -83,11 +83,15 @@ class ComicController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Comic  $comic
-     * @return \Illuminate\Http\Response
+     * 
      */
     public function update(Request $request, Comic $comic)
     {
         //
+        $data = $request->all();
+        $comic->fill($data);
+        $comic->update();
+        return to_route('comics.show',$comic->id);
     }
 
     /**
