@@ -10,7 +10,7 @@
             @csrf
             @method('PUT')
             <input type="text" id="title" value="{{old('title', $comic->title)}}" name="title" class="form-control mt-2" placeholder="Inserisci un titolo" required>
-            <textarea name="description" id="description" value="{{old('description', $comic->description)}}" class="form-control mt-2" cols="50" rows="10" placeholder="Inserisci una descrizione" required></textarea>
+            <textarea name="description" id="description" class="form-control mt-2" cols="50" rows="10" placeholder="Inserisci una descrizione" required>{{old('description', $comic->description)}}</textarea>
             <input type="text" id="thumb" name="thumb" class="form-control mt-2" placeholder="Inserisci la url di un immagine">
             <input type="text" id="price" value="{{old('price', $comic->price)}}" name="price" class="form-control mt-2" placeholder="Inserisci il prezzo" required>
             <input type="date" id="sale_date" value="{{old('sale_date', $comic->sale_date)}}" name="sale_date" class="form-control mt-2" required>
