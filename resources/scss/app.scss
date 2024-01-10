@@ -15,6 +15,12 @@ $fa-font-path: "../webfonts" !default;
     margin: 0;
     box-sizing: border-box;
 }
+#search{
+    max-width:150px
+}
+.submit-search{
+    font-weight: 700;
+}
 .modal-title{
     font-weight:600;
 }

@@ -6,12 +6,20 @@
 
 <div class="bg-black">
     <div class="container">
-      <div class="row flex-wrap justify-content-between py-5">
+      <div class="row flex-wrap justify-content-start py-5">
         @if (session()->has('message'))
             <div class="alert alert-danger text-uppercase text-center">{{ session()->get('message') }}</div>
         @endif
+        <form action="{{route('comics.index')}}" method="GET" class="d-flex justify-content-end gap-2 mb-2">
+            <select name="search" id="search" class="form-select" aria-label="Default select example" autofocus>
+                <option value="">All</option>
+                <option value="comic book">Comic Book</option>
+                <option value="graphic novel">Graphic Novel</option>
+            </select>
+            <button type="submit" class="submit-search btn btn-primary text-uppercase">Search</button>
+        </form>
         @foreach ($comics as $comic)
-            <div class="col-2 d-flex flex-wrap px-2 mt-4">
+            <div class="col-2 d-flex flex-wrap justify-content-start px-2 mt-4">
                 <div class="my-card">
                     <div class="img-box">
                         <a href="{{route('comics.show', $comic->id)}}">
