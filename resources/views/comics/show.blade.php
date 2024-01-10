@@ -29,10 +29,9 @@
             <form action="{{route('comics.destroy', $comic->id)}}" method="POST" class="d-flex justify-content-center align-items-center">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger">Remove Comic</button>
+                <button type="submit" data-item-title="{{$comic->title}}" class="remove-btn btn btn-danger">Remove Comic</button>
             </form>
         </div>
     </div>
-
-
+@include('partials.advice_delete');
 @endsection
