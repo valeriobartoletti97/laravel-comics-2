@@ -137,4 +137,8 @@ php artisan route:list --except-vendor
 
 composer dump-autoload
 
+#creo form rewuest per validazione
+
+php artisan make:request StoreNomeModelRequest
+
 ```

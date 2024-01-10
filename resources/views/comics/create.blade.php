@@ -21,7 +21,7 @@
                     required>
                 <textarea name="description" id="description" class="form-control mt-2" cols="50" rows="10"
                     placeholder="Inserisci una descrizione" required></textarea>
-                <input type="text" id="thumb" name="thumb" class="form-control mt-2"
+                <input type="url" id="thumb" name="thumb" class="form-control mt-2"
                     placeholder="Inserisci la url di un immagine">
                 <input type="text" id="price" name="price" class="form-control mt-2"
                     placeholder="Inserisci il prezzo" required>
